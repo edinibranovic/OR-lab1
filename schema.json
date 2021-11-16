@@ -1,0 +1,219 @@
+{
+     "$schema": "http://json-schema.org/draft-07/schema",
+     "$id": "http://or.fer.unizg.hr/obuca.json",
+     "type": "array",
+     "title": "obuca",
+     "description": "Skup brendova obuće za laboratorijske vježbe na kolegiju Otvoreno Računarstvo",
+     "default": [],
+     "examples": [
+         [
+             {
+                 "marka": "Nike",
+                 "model": "Air Force",
+                 "spol": "M",
+                 "velicina": 45,
+                 "godProizvodnje": 2017,
+                 "materijal": "Koza",
+                 "vrsta": "Casual Tenisice",
+                 "visinaDona": "Visok",
+                 "tipZatvaranja": "Vezice",
+                 "boja": [
+                     {
+                         "boja": "Bijela"
+                     },
+                     {
+                         "boja": "Zlatna"
+                     }
+                 ]
+             },
+             {
+                 "marka": "Nike",
+                 "model": "Air Max",
+                 "spol": "Z",
+                 "velicina": 40,
+                 "godProizvodnje": 2016,
+                 "materijal": "Tekstil",
+                 "vrsta": "Sportske Tenisice",
+                 "visinaDona": "Visok",
+                 "tipZatvaranja": "Vezice",
+                 "boja": [
+                     {
+                         "boja": "Crna"
+                     },
+                     {
+                         "boja": "Crvena"
+                     }
+                 ]
+             }
+         ]
+     ],
+     "additionalItems": true,
+     "items": {
+         "$id": "#/items",
+         "anyOf": [
+             {
+                 "$id": "#/items/anyOf/0",
+                 "type": "object",
+                 "title": "obuca",
+                 "description": "Podaci uneseni za potrebe prve laboratorijske vježbe",
+                 "default": {},
+                 "required": [
+                     "marka",
+                     "model",
+                     "spol",
+                     "velicina",
+                     "godProizvodnje",
+                     "materijal",
+                     "vrsta",
+                     "visinaDona",
+                     "tipZatvaranja",
+                     "boja"
+                 ],
+                 "properties": {
+                     "marka": {
+                         "$id": "#/items/anyOf/0/properties/marka",
+                         "type": "string",
+                         "title": "Marka",
+                         "description": "Proizvođač obuće",
+                         "default": "",
+                         "examples": [
+                             "Nike"
+                         ]
+                     },
+                     "model": {
+                         "$id": "#/items/anyOf/0/properties/model",
+                         "type": "string",
+                         "title": "Model",
+                         "description": "Naziv kolekcije kojoj obuća pripada",
+                         "default": "",
+                         "examples": [
+                             "Air Force"
+                         ]
+                     },
+                     "spol": {
+                         "$id": "#/items/anyOf/0/properties/spol",
+                         "type": "string",
+                         "title": "Spol",
+                         "description": "Spol osoba kojima je obuća namijenjena",
+                         "default": "",
+                         "examples": [
+                             "M"
+                         ]
+                     },
+                     "velicina": {
+                         "$id": "#/items/anyOf/0/properties/velicina",
+                         "type": "integer",
+                         "title": "Velicina",
+                         "description": "EU velicina obuće",
+                         "default": 0,
+                         "examples": [
+                             45
+                         ]
+                     },
+                     "godProizvodnje": {
+                         "$id": "#/items/anyOf/0/properties/godProizvodnje",
+                         "type": "integer",
+                         "title": "godProizvodnje",
+                         "description": "Godina izlaska na tržište",
+                         "default": 0,
+                         "examples": [
+                             2017
+                         ]
+                     },
+                     "materijal": {
+                         "$id": "#/items/anyOf/0/properties/materijal",
+                         "type": "string",
+                         "title": "Materijal",
+                         "description": "Glavni gradivni materijal",
+                         "default": "",
+                         "examples": [
+                             "Koza"
+                         ]
+                     },
+                     "vrsta": {
+                         "$id": "#/items/anyOf/0/properties/vrsta",
+                         "type": "string",
+                         "title": "Vrsta",
+                         "description": "Aktivnost kojoj je obuća namijenjena",
+                         "default": "",
+                         "examples": [
+                             "Casual Tenisice"
+                         ]
+                     },
+                     "visinaDona": {
+                         "$id": "#/items/anyOf/0/properties/visinaDona",
+                         "type": "string",
+                         "title": "visinaDona",
+                         "description": "Opis visine đona",
+                         "default": "",
+                         "examples": [
+                             "Visok"
+                         ]
+                     },
+                     "tipZatvaranja": {
+                         "$id": "#/items/anyOf/0/properties/tipZatvaranja",
+                         "type": "string",
+                         "title": "tipZatvaranja",
+                         "description": "Način na koji se obuća zatvara",
+                         "default": "",
+                         "examples": [
+                             "Vezice"
+                         ]
+                     },
+                     "boja": {
+                         "$id": "#/items/anyOf/0/properties/boja",
+                         "type": "array",
+                         "title": "boja",
+                         "description": "Par obuće može imati jednu ili više različitih boja, dok jedna boja može biti u jednom ili više parova obuće",
+                         "default": [],
+                         "examples": [
+                             [
+                                 {
+                                     "boja": "Bijela"
+                                 },
+                                 {
+                                     "boja": "Zlatna"
+                                 }
+                             ]
+                         ],
+                         "additionalItems": true,
+                         "items": {
+                             "$id": "#/items/anyOf/0/properties/boja/items",
+                             "anyOf": [
+                                 {
+                                     "$id": "#/items/anyOf/0/properties/boja/items/anyOf/0",
+                                     "type": "object",
+                                     "title": "boja",
+                                     "description": "Opis boje i njenih atributa",
+                                     "default": {},
+                                     "examples": [
+                                         {
+                                             "boja": "Bijela"
+                                         }
+                                     ],
+                                     "required": [
+                                         "boja"
+                                     ],
+                                     "properties": {
+                                         "boja": {
+                                             "$id": "#/items/anyOf/0/properties/boja/items/anyOf/0/properties/boja",
+                                             "type": "string",
+                                             "title": "boja",
+                                             "description": "naziv boje",
+                                             "default": "",
+                                             "examples": [
+                                                 "Bijela"
+                                             ]
+                                         }
+                                     },
+                                     "additionalProperties": true
+                                 }
+                             ]
+                         }
+                     }
+                 },
+                 "additionalProperties": true
+             }
+         ]
+     }
+ }
