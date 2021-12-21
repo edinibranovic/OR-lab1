@@ -29,14 +29,14 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `boja` (
   `id` int(11) NOT NULL,
-  `boja` text DEFAULT NULL
+  `naziv` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `boja`
 --
 
-INSERT INTO `boja` (`id`, `boja`) VALUES
+INSERT INTO `boja` (`id`, `naziv`) VALUES
 (1, 'Bijela'),
 (2, 'Crna'),
 (3, 'Plava'),

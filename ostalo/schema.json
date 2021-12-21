@@ -19,10 +19,10 @@
                  "tipZatvaranja": "Vezice",
                  "boja": [
                      {
-                         "boja": "Bijela"
+                         "naziv": "Bijela"
                      },
                      {
-                         "boja": "Zlatna"
+                         "naziv": "Zlatna"
                      }
                  ]
              },
@@ -38,10 +38,10 @@
                  "tipZatvaranja": "Vezice",
                  "boja": [
                      {
-                         "boja": "Crna"
+                         "naziv": "Crna"
                      },
                      {
-                         "boja": "Crvena"
+                         "naziv": "Crvena"
                      }
                  ]
              }
@@ -169,10 +169,10 @@
                          "examples": [
                              [
                                  {
-                                     "boja": "Bijela"
+                                     "naziv": "Bijela"
                                  },
                                  {
-                                     "boja": "Zlatna"
+                                     "naziv": "Zlatna"
                                  }
                              ]
                          ],
@@ -188,7 +188,7 @@
                                      "default": {},
                                      "examples": [
                                          {
-                                             "boja": "Bijela"
+                                             "naziv": "Bijela"
                                          }
                                      ],
                                      "required": [

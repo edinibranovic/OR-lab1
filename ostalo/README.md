@@ -1,4 +1,4 @@
-2. OR laboratorijska vježba 
+3. OR laboratorijska vježba 
 
 Tema: Obuća
 
@@ -8,13 +8,13 @@ Autor: Edin Ibranović
 
 Verzija skupa podataka: 1.0
 
-Baza podataka: MySQL
+Baza podataka: PostgreSQL
 
 Jezik u kojemu se nalaze podaci: hrvatski, engleski
 
-Datum Predaje: 2.11.2021
+Datum Predaje: 21.12.2021
 
-Datum zadnjih izmjena: 16.11.2021
+Datum zadnjih izmjena: 21.12.2021
 
 Entiteti i pripadajući atributi:
     OBUCA
@@ -31,7 +31,7 @@ Entiteti i pripadajući atributi:
 
     BOJA
         id - jedinstvena oznaka, INT, primarni ključ
-        boja - naziv boje, text
+        naziv - naziv boje, text
 
     IMA
     - postoji jer OBUCA i BOJA imaju many-to-many povezanost
