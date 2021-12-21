@@ -9,7 +9,7 @@ import java.util.*;
 @Repository
 public interface BojaRepository extends JpaRepository<Boja, Long>, JpaSpecificationExecutor<Boja> {
 
-    List<Boja> noFilter();
-    Optional<Boja> IdFilter(Long id);
-    List<Boja> BojaFilter(String bojaNaziv);
+    List<Boja> findAll();
+    Optional<Boja> findById(Integer id);
+    List<Boja> findByNaziv(String bojaNaziv);
 }

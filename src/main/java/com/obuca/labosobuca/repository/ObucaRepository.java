@@ -10,17 +10,18 @@ import java.util.*;
 @Repository
 public interface ObucaRepository extends JpaRepository<Obuca, Long>, JpaSpecificationExecutor<Obuca> {
 
-    List<Obuca> noFilter();
-    Optional<Obuca> IdFilter(Long id);
-    List<Obuca> MarkaFilter(String marka);
-    List<Obuca> ModelFilter(String model);
-    List<Obuca> VelicinaFilter(Integer velicina);
-    List<Obuca> GodProizvodnjeFilter(Integer godProizvodnje);
-    List<Obuca> SpolFilter(String spol);
-    List<Obuca> VrstaFilter(String vrsta);
-    List<Obuca> MaterijalFilter(String materijal);
-    List<Obuca> VisinaDonaFilter(String visinaDona);
-    List<Obuca> TipZatvaranjaFilter(String tipZatvaranja);
-    List<Obuca> BojeFilter(List<Boja> boje);
+    List<Obuca> findAll();
+
+    Optional<Obuca> findById(Integer id);
+    List<Obuca> findByMarka(String marka);
+    List<Obuca> findByModel(String model);
+    List<Obuca> findByVelicina(Integer velicina);
+    List<Obuca> findByGodProizvodnje(Integer godProizvodnje);
+    List<Obuca> findBySpol(String spol);
+    List<Obuca> findByVrsta(String vrsta);
+    List<Obuca> findByMaterijal(String materijal);
+    List<Obuca> findByVisinaDona(String visinaDona);
+    List<Obuca> findByTipZatvaranja(String tipZatvaranja);
+    List<Obuca> findByBojeIn(List<Boja> boje);
 
 }

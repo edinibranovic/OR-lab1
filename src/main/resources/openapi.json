@@ -1,0 +1,281 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+      "title": "Brendovi Obuće kao skup podataka za kolegij Otvoreno Računarstvo s API ostvarenjem",
+      "contact": {
+        "name": "Edin Ibranović",
+        "email": "ei52716@fer.hr"
+      },
+      "license": {
+        "name": "Apache 2.0",
+        "url": "https://www.apache.org/licenses/"
+      },
+      "version": "1.0"
+    },
+    "paths": {
+      "/obuca/": {
+        "get": {
+          "tags": [
+            "Obuca"
+          ],
+          "description": "Prikazuje svu obuću",
+          "responses": {
+            "200": {
+              "description": "Obuća učitana",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "items": {
+                      "$ref": "#/components/schemas/Obuca"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Obuca"
+          ],
+          "description": "Dodaj obuću iz POST zahtjeva",
+          "requestBody": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Obuca"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "description": "Dodana obuća",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Obuca"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "INTERNAL SERVER ERROR 500",
+              "content": {}
+            }
+          }
+        }
+      },
+      "/obuca//{id}": {
+        "put": {
+          "tags": [
+            "Obuca"
+          ],
+          "description": "Izmijenjivanje obuće",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Obuca"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Izmijenjena obuća",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Obuca"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "ERROR 404",
+              "content": {}
+            },
+            "500": {
+              "description": "INTERNAL SERVER ERROR 500",
+              "content": {}
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Obuca"
+          ],
+          "description": "Brisanje obuće",
+          "operationId": "deleteObuca",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Izbrisana obuća",
+              "content": {}
+            },
+            "404": {
+              "description": "ERROR 404",
+              "content": {}
+            }
+          }
+        }
+      },
+      "/boja": {
+        "get": {
+          "tags": [
+            "Boje"
+          ],
+          "description": "Učitava boje ()",
+          "responses": {
+            "200": {
+              "description": "Boje učitane",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "items": {
+                      "$ref": "#/components/schemas/Boja"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/boja/id/{id}": {
+        "get": {
+          "tags": [
+            "Boje"
+          ],
+          "description": "Učitava boju po ID-u",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Učitana boja po ID-u",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Boja"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "ERROR 404",
+              "content": {}
+            }
+          }
+        }
+      },
+      "/boja/naziv/{naziv}": {
+        "get": {
+          "tags": [
+            "Boje"
+          ],
+          "description": "Učitavanje boje po nazivu",
+          "parameters": [
+            {
+              "name": "name",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Učitana boja po nazivu",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Boja"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "ERROR 404",
+              "content": {}
+            }
+          }
+        }
+      },
+    "components": {
+      "schemas": {
+        "Obuca": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "marka": {
+              "type": "string"
+            },
+            "model": {
+              "type": "string"
+            },
+            "velicina": {
+              "type": "integer"
+            },
+            "spol": {
+              "type": "string"
+            },
+            "godProizvodnje": {
+              "type": "integer"
+            },
+            "materijal": {
+              "type": "string"
+            },
+            "vrsta": {
+              "type": "string"
+            },
+            "visinaDona": {
+                "type": "string"
+            },
+            "tipZatvaranja": {
+                "type": "string"
+            },
+            "boje": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          }
+        },
+        "Boja": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "naziv": {
+              "type": "string"
+            }
+          }
+        }
+        }
+      }
+    }
+  }

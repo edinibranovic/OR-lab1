@@ -30,11 +30,11 @@ public class ObucaController {
         this.bojaRepository = bojaRepository;
     }
 
-    @GetMapping ("/wrapped")
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public ObuceWrappedResponse findAllWrapped() {
+    public ObuceWrappedResponse findAll() {
 
-        List<Obuca> obuce = obucaRepository.noFilter();
+        List<Obuca> obuce = obucaRepository.findAll();
 
         if (!obuce.isEmpty()) {
             return new ObuceWrappedResponse("OK","Obuće učitane", obuce);
@@ -43,11 +43,11 @@ public class ObucaController {
         }
     }
 
-    @PostMapping ("/wrapped")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ObucaWrappedResponse addObuca(@RequestBody Obuca obuca) {
+    public ObucaWrappedResponse addBoja(@RequestBody Obuca obuca) {
 
-        bojaRepository.saveAll(obuca.getBoje());
+        obucaRepository.save(obuca);
 
         final Obuca createdObuca = obucaRepository.save(obuca);
 
@@ -55,11 +55,11 @@ public class ObucaController {
 
     }
 
-    @PutMapping ("/wrapped/{id}")
+    @PutMapping ("/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public ObucaWrappedResponse addObuca(@RequestBody Obuca newObuca, @PathVariable Long id) {
+    public ObucaWrappedResponse editObuca(@RequestBody Obuca newObuca, @PathVariable Integer id) {
 
-        Optional<Obuca> foundObuca = obucaRepository.IdFilter(id);
+        Optional<Obuca> foundObuca = obucaRepository.findById(id);
 
         if(foundObuca.isPresent()) {
             foundObuca
@@ -82,11 +82,11 @@ public class ObucaController {
         }
     }
 
-    @DeleteMapping ("/wrapped/{id}")
+    @DeleteMapping ("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public String deleteObuca(@PathVariable Long id) {
+    public String deleteObuca(@PathVariable Integer id) {
 
-        Optional<Obuca> foundObuca = obucaRepository.IdFilter(id);
+        Optional<Obuca> foundObuca = obucaRepository.findById(id);
 
         if(foundObuca.isPresent()) {
             obucaRepository.delete(foundObuca.get());
@@ -97,76 +97,67 @@ public class ObucaController {
         }
     }
 
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public List<Obuca> noFilter() {
-
-        List<Obuca> obuce = obucaRepository.noFilter();
-
-        return obuce;
-    }
-
     @GetMapping("/marka/{marka}")
     @ResponseStatus(HttpStatus.CREATED)
     public List<Obuca> MarkaFiltriranje(@PathVariable String marka) {
 
-        return obucaRepository.MarkaFilter(marka);
+        return obucaRepository.findByMarka(marka);
     }
 
     @GetMapping("/model/{model}")
     @ResponseStatus(HttpStatus.CREATED)
     public List<Obuca> ModelFiltriranje(@PathVariable String model) {
 
-        return obucaRepository.ModelFilter(model);
+        return obucaRepository.findByModel(model);
     }
 
     @GetMapping("/velicina/{velicina}")
     @ResponseStatus(HttpStatus.CREATED)
     public List<Obuca> VelicinaFiltriranje(@PathVariable String velicina) {
 
-        return obucaRepository.VelicinaFilter(Integer.parseInt(velicina));
+        return obucaRepository.findByVelicina(Integer.parseInt(velicina));
     }
 
     @GetMapping("/godProizvodnje/{godProizvodnje}")
     @ResponseStatus(HttpStatus.CREATED)
     public List<Obuca> GodProizvodnjeFiltriranje(@PathVariable String godProizvodnje) {
 
-        return obucaRepository.GodProizvodnjeFilter(Integer.parseInt(godProizvodnje));
+        return obucaRepository.findByGodProizvodnje(Integer.parseInt(godProizvodnje));
     }
 
     @GetMapping("/spol/{spol}")
     @ResponseStatus(HttpStatus.CREATED)
     public List<Obuca> SpolFiltriranje(@PathVariable String spol) {
 
-        return obucaRepository.SpolFilter(spol);
+        return obucaRepository.findBySpol(spol);
     }
 
     @GetMapping("/vrsta/{vrsta}")
     @ResponseStatus(HttpStatus.CREATED)
     public List<Obuca> VrstaFiltriranje(@PathVariable String vrsta) {
 
-        return obucaRepository.VrstaFilter(vrsta);
+        return obucaRepository.findByVrsta(vrsta);
     }
 
     @GetMapping("/materijal/{materijal}")
     @ResponseStatus(HttpStatus.CREATED)
     public List<Obuca> MaterijalFiltriranje(@PathVariable String materijal) {
 
-        return obucaRepository.MaterijalFilter(materijal);
+        return obucaRepository.findByMaterijal(materijal);
     }
 
     @GetMapping("/visinaDona/{visinaDona}")
     @ResponseStatus(HttpStatus.CREATED)
     public List<Obuca> VisinaDonaFiltriranje(@PathVariable String visinaDona) {
 
-        return obucaRepository.VisinaDonaFilter(visinaDona);
+        return obucaRepository.findByVisinaDona(visinaDona);
     }
 
     @GetMapping("/tipZatvaranja/{tipZatvaranja}")
     @ResponseStatus(HttpStatus.CREATED)
     public List<Obuca> TipZatvaranjaFiltriranje(@PathVariable String tipZatvaranja) {
 
-        return obucaRepository.TipZatvaranjaFilter(tipZatvaranja);
+        return obucaRepository.findByTipZatvaranja(tipZatvaranja);
     }
     
     @GetMapping("/boja/{bojaNaziv}")
@@ -175,9 +166,9 @@ public class ObucaController {
 
         List<Boja> foundBoje = new ArrayList<>();
 
-        foundBoje = Stream.of(bojaRepository.BojaFilter(bojaNaziv)).flatMap(Collection::stream).distinct().collect(Collectors.toList());
+        foundBoje = Stream.of(bojaRepository.findByNaziv(bojaNaziv)).flatMap(Collection::stream).distinct().collect(Collectors.toList());
 
-        return obucaRepository.BojeFilter(foundBoje);
+        return obucaRepository.findByBojeIn(foundBoje);
     }
     
 }
